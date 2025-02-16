@@ -1,0 +1,25 @@
+.loadMoreBtn {
+  min-width: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 8px 16px;
+  min-width: 91px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid;
+  border-color: #93b1bb;
+  color: #2c2a2a;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 16px;
+  margin: 32px auto;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loadMoreBtn:hover {
+  border-color: transparent;
+  background-color: #049ed1;
+}
