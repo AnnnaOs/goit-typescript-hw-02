@@ -1,6 +1,5 @@
 import Modal from 'react-modal';
 import { Image } from '../App/App.types';
-import { FaTimes } from 'react-icons/fa';
 import css from './ImageModal.module.css';
 
 interface ImageModalProps {
@@ -24,21 +23,7 @@ const ImageModal = ({ isOpen, onClose, image }: ImageModalProps) => {
           alt={image?.alt_description}
           className={css.imageModal}
         />
-        <div className={css.imageInfo}>
-          <p>
-            <strong>✍️Author:</strong> {image?.user?.name}
-          </p>
-          <p>
-            <strong>❤️Likes:</strong> {image?.likes}
-          </p>
-          <p>
-            <strong>📝Description:</strong>{' '}
-            {image?.alt_description || 'No description available'}
-          </p>
-        </div>
-        <button className={css.imageModalCloseBtn} onClick={onClose}>
-          <FaTimes size={24} />
-        </button>
+        <p className={css.imageModalDescription}>Author: {image?.user?.name}</p>
       </div>
     </Modal>
   );

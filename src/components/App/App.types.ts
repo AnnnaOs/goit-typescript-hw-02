@@ -8,5 +8,4 @@ export type Image = {
   user?: {
     name: string;
   };
-  likes?: number;
 };
