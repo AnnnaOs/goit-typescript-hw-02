@@ -10,13 +10,12 @@ const ImageCard = ({ image, openModal }: ImageCardProps) => {
   return (
     <div className={css.imageCard}>
       <img
-        onClick={() => {
-          openModal(image);
-        }}
         className={css.image}
         src={image.urls.small}
         alt={image.alt_description}
-        width="360"
+        onClick={() => {
+          openModal(image);
+        }}
       />
     </div>
   );

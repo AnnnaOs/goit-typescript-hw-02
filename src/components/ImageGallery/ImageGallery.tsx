@@ -11,7 +11,7 @@ const ImageGallery = ({ images, openModal }: ImageGalleryProps) => {
   return (
     <ul className={css.imageGallery}>
       {images.map(image => (
-        <li key={image.id} className={css.imageGalleryItem}>
+        <li className={css.imageGalleryItem} key={image.id}>
           <ImageCard image={image} openModal={openModal} />
         </li>
       ))}

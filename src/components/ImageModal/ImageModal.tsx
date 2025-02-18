@@ -3,12 +3,12 @@ import { Image } from '../App/App.types';
 import css from './ImageModal.module.css';
 
 interface ImageModalProps {
+  image: Image | null;
   isOpen: boolean;
   onClose: () => void;
-  image: Image | null;
 }
 
-const ImageModal = ({ isOpen, onClose, image }: ImageModalProps) => {
+const ImageModal = ({ image, isOpen, onClose }: ImageModalProps) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -23,7 +23,10 @@ const ImageModal = ({ isOpen, onClose, image }: ImageModalProps) => {
           alt={image?.alt_description}
           className={css.imageModal}
         />
-        <p className={css.imageModalDescription}>Author: {image?.user?.name}</p>
+        <div className={css.imageModalInfo}>
+          <p className={css.imageModalDescription}>{image?.alt_description}</p>
+          <p className={css.imageModalAuthor}>by {image?.user?.name}</p>
+        </div>
       </div>
     </Modal>
   );

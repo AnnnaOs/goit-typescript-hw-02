@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { GoSearch } from 'react-icons/go';
 import toast from 'react-hot-toast';
+import { GoSearch } from 'react-icons/go';
 import css from './SearchBar.module.css';
 
 interface SearchBarProps {
@@ -8,10 +8,10 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ onSubmit }: SearchBarProps) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
 
-  const handleSubmit = (ev: FormEvent) => {
-    ev.preventDefault();
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
     if (query.trim() === '') {
       toast('Please enter a search term', {
@@ -20,17 +20,17 @@ const SearchBar = ({ onSubmit }: SearchBarProps) => {
       return;
     }
     onSubmit(query.trim());
-    // setQuery('');
+    setQuery('');
   };
 
   return (
     <header className={css.searchBar}>
-      <form onSubmit={handleSubmit} className={css.searchBarForm}>
+      <form className={css.searchBarForm} onSubmit={handleSubmit}>
         <div className={css.inputWrap}>
           <GoSearch
             className={css.searchBarIcon}
             size={16}
-            onClick={ev => handleSubmit(ev)}
+            onClick={e => handleSubmit(e)}
           />
           <input
             type="text"

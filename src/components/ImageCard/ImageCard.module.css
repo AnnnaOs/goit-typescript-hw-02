@@ -1,8 +1,10 @@
 .imageCard {
   height: 100%;
+  max-width: 400px;
 }
 
 .image {
+  width: 100%;
   height: 100%;
   object-fit: cover;
   cursor: pointer;
@@ -10,5 +12,5 @@
 }
 
 .image:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }

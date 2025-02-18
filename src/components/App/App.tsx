@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import toast, { Toaster } from 'react-hot-toast';
-import { fetchImages } from '../../services/unsplash-api';
-import { Image } from './App.types';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import SearchBar from '../SearchBar/SearchBar';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import ImageModal from '../ImageModal/ImageModal';
+import { fetchImages } from '../../services/unsplash-api';
+import { Image } from './App.types';
 
 Modal.setAppElement('#root');
 
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
+  const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState<number>(1);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isShowButton, setIsShowButton] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<Image | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!query) return;
@@ -28,8 +28,8 @@ const App = () => {
     const loadGallery = async () => {
       try {
         setIsLoading(true);
-        const res = await fetchImages(query, page);
 
+        const res = await fetchImages(query, page);
         if (res.results.length === 0) {
           setIsShowButton(false);
           toast('Sorry, there are no images matching your search', {
@@ -62,11 +62,13 @@ const App = () => {
   const openModal = (imageId: Image) => {
     setSelectedImage(imageId);
     setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedImage(null);
     setIsModalOpen(false);
+    document.body.style.overflow = '';
   };
 
   return (
