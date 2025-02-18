@@ -17,7 +17,7 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  max-width: 80%;
+  max-width: 70%;
   text-align: center;
   overflow: auto;
   transition: transform 0.3s ease-in-out;
